@@ -4,11 +4,7 @@
 import os
 import sys
 import platform
-
-try:
-    from setuptools import setup, Extension
-except ImportError:
-    from distutils.core import setup, Extension
+from distutils.core import setup, Extension
 
 # avoid building universal binary (ppc) on osx non-ppc platforms
 if sys.platform == 'darwin':
@@ -18,14 +14,13 @@ if sys.platform == 'darwin':
 
 extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
-VERSION = '0.1.0'
+VERSION = '0.1.3'
 
 cpp_files = [
     'smhasher/src/MurmurHash2.cpp',
     'smhasher/src/MurmurHash3.cpp',
     'pysmhasher.cpp'
 ]
-
 
 pysmhasher_ext = Extension(
     'pysmhasher',
@@ -40,6 +35,8 @@ setup(
     version=VERSION,
     maintainer='Yong Li',
     maintainer_email='liyong19861014@gmail.com',
+    url='https://github.com/airhuman/pysmhasher.git',
+    description='Python Extensions for SMHasher',
     keywords=['hash', 'smhasher'],
     ext_modules=[pysmhasher_ext]
 )

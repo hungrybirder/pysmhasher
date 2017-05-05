@@ -1,0 +1,2 @@
+include *.cpp LICENSE *.py
+recursive-include smhasher *

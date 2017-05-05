@@ -1,6 +1,8 @@
-# Google SMHasher Python扩展#
+# Google SMHasher Python扩展 #
 
-参考[pypi smhasher](https://pypi.python.org/pypi/smhasher)，但它只封装了MurMurHash3。
+参考[pypi smhasher](https://pypi.python.org/pypi/smhasher)。
+
+提供SMHasher中，更多的方法。
 
 
 ## 安装方法 ##
