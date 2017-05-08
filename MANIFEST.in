@@ -1,2 +1,2 @@
 include *.cpp LICENSE *.py README.md
-recursive-include smhasher *
+include smhasher/src/*

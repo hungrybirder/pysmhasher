@@ -3,9 +3,10 @@
 
 import os
 import sys
+import io
 import platform
 import subprocess
-from distutils.core import setup, Extension
+from setuptools import setup, Extension
 
 # avoid building universal binary (ppc) on osx non-ppc platforms
 if sys.platform == 'darwin':
@@ -15,7 +16,7 @@ if sys.platform == 'darwin':
 
 extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
-VERSION = '0.1.5'
+VERSION = '0.1.6'
 
 if not os.path.exists('smhasher/src'):
     sys.stderr.write('run command:\ngit submodule update --init\n')
@@ -28,12 +29,20 @@ if not os.path.exists('smhasher/src'):
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-readme_path = os.path.join(here, 'README.md')
+readme_md_path = os.path.join(here, 'README.md')
+readme_txt_path = os.path.join(here, 'README.txt')
 try:
     import pypandoc
-    long_description = pypandoc.convert(readme_path, 'rst')
+    long_description = pypandoc.convert(readme_md_path, 'rst')
+    # 运行python setup.py sdist命令时
+    # 如果没有README或README.txt文件
+    # 会出警告
+    # 所以临时生成README.txt
+    with io.open(readme_txt_path, mode='w', encoding='utf-8') as f:
+        f.write(long_description)
 except (IOError, ImportError):
-    long_description = open(readme_path).read()
+    with io.open(readme_md_path, encoding='utf-8') as f:
+        long_description = f.read()
 
 cpp_files = [
     'smhasher/src/MurmurHash2.cpp',
@@ -60,24 +69,12 @@ setup(
     keywords='hash hashing smhasher',
     license='MIT',
     ext_modules=[pysmhasher_ext],
-    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        # How mature is this project? Common values are
-        #   3 - Alpha
-        #   4 - Beta
-        #   5 - Production/Stable
         'Development Status :: 3 - Alpha',
-
-        # Indicate who your project is intended for
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-
-        # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: MIT License',
 
-        # Specify the Python versions you support here. In particular, ensure
-        # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
@@ -85,4 +82,9 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
+    install_requires=['pypandoc'],
 )
+
+# 删除RADME.txt
+if os.path.exists(readme_txt_path):
+    os.remove(readme_txt_path)
