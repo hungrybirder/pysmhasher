@@ -1,8 +1,10 @@
 # Google SMHasher Python 扩展 #
 
-参考[pypi smhasher](\ https://pypi.python.org/pypi/smhasher)。
+参考[python-smhasher](\ https://github.com/phensley/python-smhasher)
 
-提供SMHasher中，更多的方法。
+提供SMHasher中，更多的方法
+
+License: MIT License
 
 ## 安装方法 ## ``` pip install pysmhasher``\ \`
 
