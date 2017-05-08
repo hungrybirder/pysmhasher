@@ -7,7 +7,7 @@
 License: MIT License
 
 
-## 安装方法 ##
+## 从pypi上安装 ##
 ```
 pip install pysmhasher
 ```
@@ -21,4 +21,12 @@ pip install pysmhasher
 >>> pysmhasher.murmurhash2('hello', seed)
 1143501851
 ```
+
+## 下载代码并安装 ##
+```
+git clone --recurse-submodules https://github.com/airhuman/pysmhasher.git
+cd pysmhasher
+python setup.py install
+```
+
 
