@@ -1,4 +1,4 @@
-# Google SMHasher Python扩展 #
+# Google SMHasher Python 扩展 #
 
 参考[pypi smhasher](https://pypi.python.org/pypi/smhasher)。
 
