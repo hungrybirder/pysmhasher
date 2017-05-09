@@ -16,7 +16,7 @@ if sys.platform == 'darwin':
 
 extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
-VERSION = '0.1.6'
+VERSION = '0.1.7'
 
 if not os.path.exists('smhasher/src'):
     sys.stderr.write('run command:\ngit submodule update --init\n')
@@ -41,8 +41,11 @@ try:
     with io.open(readme_txt_path, mode='w', encoding='utf-8') as f:
         f.write(long_description)
 except (IOError, ImportError):
-    with io.open(readme_md_path, encoding='utf-8') as f:
-        long_description = f.read()
+    try:
+        with io.open(readme_md_path, encoding='utf-8') as f:
+            long_description = f.read()
+    except IOError:
+        long_description = ''  # never got here
 
 cpp_files = [
     'smhasher/src/MurmurHash2.cpp',

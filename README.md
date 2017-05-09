@@ -2,11 +2,11 @@ Google SMHasher Python 扩展
 ===========================
 
 [![Build Status](https://travis-ci.org/airhuman/pysmhasher.svg?branch=master)](https://travis-ci.org/airhuman/pysmhasher)
+[![PyPI](https://img.shields.io/pypi/v/pysmhasher.svg)](https://pypi.python.org/pypi/pysmhasher)
+![](https://img.shields.io/pypi/pyversions/pysmhasher.svg)
+![](https://img.shields.io/pypi/l/pysmhasher.svg)
 
 pysmhasher封装SMHasher中，更多的方法
-
-License: MIT License
-
 
 使用方法
 --------
