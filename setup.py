@@ -16,7 +16,7 @@ if sys.platform == 'darwin':
 
 extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
-VERSION = '0.1.8'
+VERSION = '0.1.9'
 
 if not os.path.exists('smhasher/src'):
     sys.stderr.write('run command:\ngit submodule update --init\n')
@@ -29,23 +29,11 @@ if not os.path.exists('smhasher/src'):
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-readme_md_path = os.path.join(here, 'README.md')
-readme_txt_path = os.path.join(here, 'README.txt')
+readme = os.path.join(here, 'README.rst')
 try:
-    import pypandoc
-    long_description = pypandoc.convert(readme_md_path, 'rst')
-    # 运行python setup.py sdist命令时
-    # 如果没有README或README.txt文件
-    # 会出警告
-    # 所以临时生成README.txt
-    with io.open(readme_txt_path, mode='w', encoding='utf-8') as f:
-        f.write(long_description)
+    long_description = io.open(readme, mode='r', encoding='utf-8').read()
 except (IOError, ImportError):
-    try:
-        with io.open(readme_md_path, encoding='utf-8') as f:
-            long_description = f.read()
-    except IOError:
-        long_description = ''  # never got here
+    long_description = ''  # never got here
 
 cpp_files = [
     'smhasher/src/MurmurHash2.cpp',
@@ -85,9 +73,4 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    install_requires=['pypandoc'],
 )
-
-# 删除RADME.txt
-if os.path.exists(readme_txt_path):
-    os.remove(readme_txt_path)
