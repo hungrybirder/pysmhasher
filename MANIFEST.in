@@ -9,3 +9,4 @@ recursive-include smhasher *.cpp
 recursive-include smhasher *.h
 recursive-include smhasher *.md
 recursive-include smhasher *.txt
+recursive-include tests *.py
