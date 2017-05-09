@@ -1,7 +1,10 @@
 build
 dist
 *.egg-info
+*.egg
 *.pyc
 MANIFEST
 README.txt
 __pycache__
+*.so
+.tox
