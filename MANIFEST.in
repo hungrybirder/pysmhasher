@@ -1,2 +1,11 @@
-include *.cpp LICENSE *.py README.md
-include smhasher/src/*
+include *.in
+include *.md
+include *.py
+include *.sh
+include LICENSE
+include tox.ini
+recursive-include smhasher *.c
+recursive-include smhasher *.cpp
+recursive-include smhasher *.h
+recursive-include smhasher *.md
+recursive-include smhasher *.txt
