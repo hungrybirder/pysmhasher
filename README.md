@@ -1,6 +1,8 @@
 Google SMHasher Python 扩展
 ===========================
 
+[![Build Status](https://travis-ci.org/airhuman/pysmhasher.svg?branch=master)](https://travis-ci.org/airhuman/pysmhasher)
+
 pysmhasher封装SMHasher中，更多的方法
 
 License: MIT License
