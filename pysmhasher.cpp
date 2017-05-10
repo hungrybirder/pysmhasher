@@ -26,7 +26,6 @@ static PyObject *PY_MurmurHash2A(PyObject *self, PyObject *args) {
   }
   uint32_t h = MurmurHash2A(key, len, seed);
   return PyLong_FromUnsignedLong(h);
-  return PyLong_FromUnsignedLongLong(h);
 }
 
 static PyObject *PY_MurmurHash64B(PyObject *self, PyObject *args) {
