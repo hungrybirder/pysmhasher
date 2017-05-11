@@ -8,3 +8,4 @@ README.txt
 __pycache__
 *.so
 .tox
+.cache
