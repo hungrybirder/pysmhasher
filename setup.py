@@ -53,7 +53,7 @@ setup(
     name='pysmhasher',
     version=VERSION,
     author='Yong Li',
-    author_email='liyong19861014@gmail.com',
+    author_email='hungrybirder@gmail.com',
     url='https://github.com/airhuman/pysmhasher.git',
     description='Python Extensions for SMHasher',
     long_description=long_description,
