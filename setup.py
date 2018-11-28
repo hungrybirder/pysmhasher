@@ -16,7 +16,7 @@ if sys.platform == 'darwin':
 
 extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
-VERSION = '0.1.9'
+VERSION = '0.1.10'
 
 if not os.path.exists('smhasher/src'):
     sys.stderr.write('run command:\ngit submodule update --init\n')
@@ -67,8 +67,6 @@ setup(
         'License :: OSI Approved :: MIT License',
 
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
