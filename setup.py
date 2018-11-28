@@ -24,8 +24,8 @@ if not os.path.exists('smhasher/src'):
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     outs, errs = p.communicate()
     p.wait()
-    sys.stderr.write(outs)
-    sys.stderr.write(errs)
+    sys.stderr.write(str(outs))
+    sys.stderr.write(str(errs))
 
 here = os.path.abspath(os.path.dirname(__file__))
 
