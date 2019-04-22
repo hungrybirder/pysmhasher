@@ -16,7 +16,7 @@ if sys.platform == 'darwin':
 
 extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
-VERSION = '0.1.12'
+VERSION = '0.1.13'
 
 if not os.path.exists('smhasher/src'):
     sys.stderr.write('run command:\ngit submodule update --init\n')

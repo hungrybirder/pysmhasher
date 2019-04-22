@@ -14,4 +14,4 @@ deploy:
   on:
     tags: true
     distributions: sdist
-    repo: airhuman/pysmhasher
+    repo: hungrybirder/pysmhasher
