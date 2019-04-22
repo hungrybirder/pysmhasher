@@ -1,7 +1,7 @@
 Google SMHasher Python 扩展
 ===========================
 
-[![Build Status](https://travis-ci.org/airhuman/pysmhasher.svg?branch=master)](https://travis-ci.org/airhuman/pysmhasher)
+[![Build Status](https://travis-ci.org/hungrybirder/pysmhasher.svg?branch=master)](https://travis-ci.org/hungrybirder/pysmhasher)
 [![PyPI](https://img.shields.io/pypi/v/pysmhasher.svg)](https://pypi.python.org/pypi/pysmhasher)
 ![](https://img.shields.io/pypi/pyversions/pysmhasher.svg)
 ![](https://img.shields.io/pypi/l/pysmhasher.svg)
@@ -24,7 +24,7 @@ pip install pysmhasher
 1143501851
 
 #下载代码并安装
-git clone --recurse-submodules https://github.com/airhuman/pysmhasher.git
+git clone --recurse-submodules https://github.com/hungrybirder/pysmhasher.git
 cd pysmhasher
 python setup.py install
 ```
