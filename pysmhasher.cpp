@@ -3,6 +3,7 @@
 
 #include "MurmurHash2.h"
 #include "MurmurHash3.h"
+#include "City.h"
 
 PyDoc_STRVAR(module_doc, "Python Extensions for SMHasher");
 
@@ -69,6 +70,36 @@ static PyObject *PY_MurmurHash3_x86_128(PyObject *self, PyObject *args) {
   return _PyLong_FromByteArray((const unsigned char *)&out, 16, 0, 0);
 }
 
+static PyObject *PY_CityHash32(PyObject *self, PyObject *args) {
+  char *key;
+  unsigned len;
+  unsigned seed = 0;
+  if (!PyArg_ParseTuple(args, "s#|I", &key, &len, &seed)) {
+    return NULL;
+  }
+  uint32_t h = CityHash32WithSeed(key, len, seed);
+  return PyLong_FromUnsignedLong(h);
+}
+
+static PyObject *PY_CityHash64(PyObject *self, PyObject *args) {
+  char *key;
+  unsigned len;
+  // unsigned seed = 0;
+  // if (!PyArg_ParseTuple(args, "s#|I", &key, &len, &seed)) {
+  //   return NULL;
+  // }
+  // uint64_t h = CityHash64WithSeed(key, len, seed);
+  if (!PyArg_ParseTuple(args, "s#|I", &key, &len)) {
+    return NULL;
+  }
+  uint64_t h = CityHash64(key, len);
+#if defined(__x86_64__)
+  return PyLong_FromUnsignedLong(h);
+#else
+  return PyLong_FromUnsignedLongLong(h);
+#endif
+}
+
 // 32-bit end
 
 // 64-bit
@@ -110,7 +141,10 @@ static PyMethodDef methods[] = {
     {"murmurhash3_x86_32", PY_MurmurHash3_x86_32, METH_VARARGS, "32-bit hash"},
     {"murmurhash3_x64_128", PY_MurmurHash3_x64_128, METH_VARARGS,
      "128-bit hash"},
-    {NULL, NULL, 0, NULL}};  // sentinel
+    {"cityhash32", PY_CityHash32, METH_VARARGS, "city hash 32"},
+    {"cityhash64", PY_CityHash64, METH_VARARGS, "city hash 64"},
+    {NULL, NULL, 0, NULL}}; // sentinel
+
 #else
 static PyMethodDef methods[] = {
     {"murmurhash2", PY_MurmurHash2, METH_VARARGS, "32-bit hash"},
@@ -121,14 +155,16 @@ static PyMethodDef methods[] = {
     {"murmurhash3_x86_32", PY_MurmurHash3_x86_32, METH_VARARGS, "32-bit hash"},
     {"murmurhash3_x86_128", PY_MurmurHash3_x86_128, METH_VARARGS,
      "128-bit hash"},
+    {"cityhash32", PY_CityHash32, METH_VARARGS, "city hash 32"},
+    {"cityhash64", PY_CityHash64, METH_VARARGS, "city hash 64"},
     {NULL, NULL, 0, NULL}};  // sentinel
 
 #endif
 
-#if PY_MAJOR_VERSION == 3  // python3
+#if PY_MAJOR_VERSION == 3 // python3
 static struct PyModuleDef pysmhasher_module = {
     PyModuleDef_HEAD_INIT, module_doc,
-    "smhasher python extensions",  // doc
+    "smhasher python extensions", // doc
     -1, methods};
 
 #ifdef __cplusplus
@@ -145,7 +181,7 @@ PyMODINIT_FUNC PyInit_pysmhasher(void) {
 }
 #endif
 
-#else  // python2
+#else // python2
 
 #ifdef __cplusplus
 extern "C" {

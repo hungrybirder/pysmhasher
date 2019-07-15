@@ -23,6 +23,9 @@ pip install pysmhasher
 >>> pysmhasher.murmurhash2('hello', seed)
 1143501851
 
+>>> pysmhasher.cityhash64("DBE4CBA7-2ADC-4F32-8D54-D8F065FED9CC")
+6587470800993669582
+
 #下载代码并安装
 git clone --recurse-submodules https://github.com/hungrybirder/pysmhasher.git
 cd pysmhasher

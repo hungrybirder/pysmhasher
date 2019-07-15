@@ -36,15 +36,16 @@ except (IOError, ImportError):
     long_description = ''  # never got here
 
 cpp_files = [
-    'smhasher/src/MurmurHash2.cpp',
-    'smhasher/src/MurmurHash3.cpp',
+    'smhasher/MurmurHash2.cpp',
+    'smhasher/MurmurHash3.cpp',
+    'smhasher/City.cpp',
     'pysmhasher.cpp'
 ]
 
 pysmhasher_ext = Extension(
     'pysmhasher',
     sources=cpp_files,
-    include_dirs=['smhasher/src'],
+    include_dirs=['smhasher'],
     define_macros=[('MODULE_VERSION', '"{}"'.format(VERSION))],
     extra_compile_args=extra_compile_args
 )
@@ -70,5 +71,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
 )
