@@ -4,11 +4,8 @@ matrix:
     - python: 2.7
       dist: bionic
       sudo: false
-    - python: 3.4
-      dist: bionic
-      sudo: false
     - python: 3.5
-      dist: bionic
+      dist: xenial
       sudo: false
     - python: 3.6
       dist: bionic
