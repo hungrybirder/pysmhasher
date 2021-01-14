@@ -18,7 +18,7 @@ extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
 VERSION = '0.2.3'
 
-if not os.path.exists('smhasher/src'):
+if not os.path.exists('smhasher'):
     sys.stderr.write('run command:\ngit submodule update --init\n')
     p = subprocess.Popen(args=['git', 'submodule', 'update', '--init'],
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
