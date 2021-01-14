@@ -1,12 +1,6 @@
 language: python
 matrix:
   include:
-    - python: 2.7
-      dist: bionic
-      sudo: false
-    - python: 3.5
-      dist: xenial
-      sudo: false
     - python: 3.6
       dist: bionic
       sudo: false
