@@ -12,7 +12,7 @@ from setuptools import setup, Extension
 if sys.platform == 'darwin':
     arch = platform.machine()
     if arch in ('i386', 'x86_64'):
-        os.environ['ARCHFLAGS'] = '-arch i386 -arch x86_64'
+        os.environ['ARCHFLAGS'] = '-arch x86_64'
 
 extra_compile_args = ['-g', '-fPIC', '-Wall', '-O2']
 
